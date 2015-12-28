@@ -1,3 +1,7 @@
+# Testing if the initialization worked. This file will eventually handle all dictionary functions,
+# including initialization, addition, subtraction, and writing.
+
+
 from d_ini import *
 
 
@@ -7,11 +11,3 @@ print(dLoot)
 dLoot = d_ini()
 
 print(dLoot)
-
-#f = open('lt.csv', 'w')
-
-#for item in dLoot:
-#	value = dLoot[item]
-#	f.write(str(item) + ', ' + str(value) + '\n')
-
-#f.close()

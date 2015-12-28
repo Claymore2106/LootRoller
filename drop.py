@@ -1,7 +1,4 @@
-# define two numbers that are percents
-# generate a number between 1 and 100 that represents the drop
-# if its equal to or below a percent, drop that item
-# if it is greater than a percent, drop the next item
+# Test file for random numbers and ensuring drop percentages match real drop percentages.
 
 
 import random
