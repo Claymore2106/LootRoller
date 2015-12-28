@@ -5,5 +5,4 @@ This program will allow a user to create entities containing items, and to drop 
 percentages.
 
 ## Version
-Pre-alpha 0.0.01
-testline
+Pre-alpha v0.0.01
