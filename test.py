@@ -1,30 +1,30 @@
-from dhand import *
+#import dtest
+import ihand
+import dhand
+import ctest
 
 
 d = {}
 
+print('%sTable should be empty:%s %s' % (ctest.c_Uncommon, ctest.c_Default, str(d)))
+print('%sLoading lt.loot as fodder...%s' % (ctest.c_Uncommon, ctest.c_Default))
 
-def create_item(d):
-    print(d)
-    name = input("Name of object: ")
-    value = input("Drop percentage (whole number): ")
-    print("%s: %s%%" % (name, value))
-    d[name] = [value]
-    print(d)
-    rarity = input('Rarity (g, c, u, r, e, l): ')
-    d[name].append(rarity)
-    print(d)
-    print("Writing object to test.csv...")
-    
-    d_save('tables/test.csv', d)
+dhand.d_load('tables/lt.loot', d)
 
+print('%sTable should now have shit loot in it: %s%s' % (ctest.c_Uncommon, ctest.c_Default, str(d)))
+print('%sLoading the actual table...%s' % (ctest.c_Uncommon, ctest.c_Default))
 
-#create_item(d)
+dhand.d_load('tables/test.loot', d)
+
+print('%sTable should now be different: %s%s' % (ctest.c_Uncommon, ctest.c_Default, str(d)))
+print('%sNow creating a new item:%s' % (ctest.c_Rare, ctest.c_Default))
+
+ihand.i_create(d)
+
+print('%sTable should have the new item!%s' % (ctest.c_Rare, ctest.c_Default))
 
 print(d)
-print('Loading test/csv...')
-d_ini('tables/test.csv', d)
-print('Table looks like ' + str(d))
-print('Attempting to access variables:')
-print("James's Sword should be: " + str(d["James's Sword"]))
-print("Rarity is: " + str(d["James's Sword"][1]))
+
+print('%sSaving the new item in save.loot...%s' % (ctest.c_Epic, ctest.c_Default))
+
+dhand.d_save('tables/save.loot', d)
