@@ -2,12 +2,34 @@
 # including initialization, addition, subtraction, and writing.
 
 
-from d_ini import *
+import csv
 
 
-dLoot = {}
-print(dLoot)
+def d_ini(file_path, d):
+    with open(file_path, 'r') as f:
+        reader = csv.reader(f, delimiter = '|')
 
-dLoot = d_ini()
+        for k, v in reader:
+            d[k] = v
+        print('k is: ' + str(k))
+        print('v is: ' + str(v))
+        f.close()
+        return d
 
-print(dLoot)
+    
+def d_load(file_path, d):
+	with open(file_path, 'r') as f:
+		d = {}
+		reader = csv.reader(f)
+		
+		for k, v in reader:
+			d[k] = v
+		f.close()
+		
+		return d
+
+
+def d_save(file_path, d):
+    with open(file_path, 'w') as f:
+        for i in d:
+            f.write("%s, %s\n" % (i, str(d[i])))
