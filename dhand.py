@@ -10,19 +10,6 @@ def d_ini(file_path, d):
 		reader = csv.reader(f, delimiter = '|')
 		
 		for k, v in reader:
-			d[k] = v
-		print('k is: ' + str(k))
-		print('v is: ' + str(v))
-		f.close()
-		return d
-
-
-def d_load(file_path, d):
-	d_clear(d)
-	with open(file_path, 'r') as f:
-		reader = csv.reader(f, delimiter = '|')
-		
-		for k, v in reader:
 			l = []
 			s = ""
 			n = 0
@@ -30,6 +17,31 @@ def d_load(file_path, d):
 				if c != ',':
 					s += c
 				elif c == ',':
+					l.append(s)
+					s = ""
+			l.append(s)
+			d[k] = l
+	return d
+
+
+def d_load(file_path, d):
+	d_clear(d)
+	with open(file_path, 'r') as f:
+		reader = csv.reader(f, delimiter = '|', quotechar = '"')
+		
+		for k, v in reader:
+			l = []
+			s = ""
+			n = 0
+			q = False
+			for c in v:  # Lolly|70,c,"Looks like a lolly, tastes like one too! But its a killing machine!"
+				if c == '"':
+					q = not q
+				elif c != ',':
+					s += c
+				elif c == ',' and q == True:
+					s += c
+				elif c == ',' and q == False:
 					l.append(s)
 					s = ""
 			l.append(s)

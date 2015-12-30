@@ -8,6 +8,11 @@ percentages.
 
 ######Pre-alpha
 
+v0.0.06
+- Table saving function now has the ability to check if an item is already present in the file before saving, eliminating duplicates
+- Added support for flavor text in item creation
+- Added handling for flavor text in the table reader
+
 v0.0.05
 - Realized csv reader wasn't working as intended, changed file organization to better suite the way the reader reads
 - Changed .csv extention to .loot, since its not really a csv anymore
