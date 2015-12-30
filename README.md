@@ -6,7 +6,7 @@ percentages.
 
 ## Versions
 
-###Pre-alpha
+####Pre-alpha
 
 v0.0.01
 - Created initial random drop script, the core feature
