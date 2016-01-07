@@ -13,3 +13,4 @@ def d_tsave(file_path, d):
 					s += str(v)
 			with open(file_path, 'a') as f:
 				f.write("%s|%s\n" % (str(k), str(s)))
+		f.close()

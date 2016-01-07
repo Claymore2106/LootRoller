@@ -1,7 +1,3 @@
-# Testing if the initialization worked. This file will eventually handle all dictionary functions,
-# including initialization, addition, subtraction, and writing.
-
-
 import csv
 
 

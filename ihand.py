@@ -9,5 +9,6 @@ def i_create(d):
 	flavor = '"%s"' % flavor
 	l.append(flavor)
 	d[name] = l
+	print("Added %s:%s to table" % (name, l))
 	return d
 
