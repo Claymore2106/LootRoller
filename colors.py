@@ -9,13 +9,14 @@ c_Legendary = '\033[01;36m'
 start = '\033['
 
 
-def c_Test():
+def c_test():
 	n = 0
 	while n <= 108:  # Stops at 108
 		print("%s%sm%s Test Text%s" % (start, str(n), str(n), c_Default))
 		n += 1
 
-def c_Assign(r):
+
+def c_assign(r):
 	if r == 'g':
 		return c_Garbage
 	if r == 'c':
@@ -29,6 +30,3 @@ def c_Assign(r):
 	if r == 'l':
 		return c_Legendary
 
-#print('%sThunderfury, Blessed Blade of the Windseeker%s: %s+5 Stamina%s, %s+5 Fire Resistance%s, %s"Once weilded by Thunderaan, the Prince of Air. Now it is weilded by you."%s' % (c_Legendary, c_Default, c_Uncommon, c_Default, c_Uncommon, c_Default, test, c_Default))
-
-#c_Test()

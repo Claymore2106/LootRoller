@@ -4,12 +4,15 @@ import drop
 
 
 parser = argparse.ArgumentParser('lootroller')
-parser.add_argument("COMMAND", choices=['drop', 'list'], required=False)
-parser.add_argument("-t", nargs=1, metavar=('<table>'), dest="path", help="File path to the table to load")
+parser.add_argument("ACTION",  choices=['select', 'drop', 'list'])
+parser.add_argument("-t", nargs=1, metavar='<Table>', dest="path", help="File path to the table to load")
 parser.add_argument("-v", "--verboose", help="Increase verboosity", action="store_true")
 args = parser.parse_args()
-if args.COMMAND == drop:
-	pass
+if args.ACTION == 'select':
+	path = input("Path to table: ")
+
+
+
 if args.path:
 	if args.verboose:
 		print('Creating empty dictionary')
