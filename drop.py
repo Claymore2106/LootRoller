@@ -1,5 +1,5 @@
 import random
-import ctest
+import colors
 
 
 def drop(d):
@@ -9,10 +9,10 @@ def drop(d):
 		#print(d[k])
 		percent = d[k][0]
 		
-		c = ctest.c_Assign(d[k][1])
+		c = colors.c_assign(d[k][1])
 		r = random.uniform(0.01, 100)
 	
 		if r <= float(percent):
-			print("Dropped %s%s%s!" % (c, k, ctest.c_Default))
+			print("Dropped %s%s%s!" % (c, k, colors.c_Default))
 			dropstring += k + " "
 	return dropstring

@@ -8,6 +8,11 @@ percentages.
 
 ######Pre-alpha
 
+v0.0.07
+- Program is now run with lootroller.py
+- Program is run with arguments [list, select, drop]
+- Implemented basic statefile settings
+
 v0.0.06
 - Table saving function now has the ability to check if an item is already present in the file before saving, eliminating duplicates
 - Added support for flavor text in item creation
@@ -15,13 +20,13 @@ v0.0.06
 
 v0.0.05
 - Realized csv reader wasn't working as intended, changed file organization to better suite the way the reader reads
-- Changed .csv extention to .loot, since its not really a csv anymore
+- Changed .csv extension to .loot, since its not really a csv anymore
 - Made file for handling items, added item creation method to it
-- Learned how to compile the program, eliminating the need to prefex with "python3 "
+- Learned how to compile the program, eliminating the need to prefix with "python3 "
 
 v0.0.04
 - Added a csv writer to write to a file based on user input
-- Picked colors for output text, will be implimented soon
+- Picked colors for output text, will be implemented soon
 
 v0.0.03
 - Addressed the problem of storage and decided to use csv files. Since the program does not run constantly in memory, will need to create a state file to read from
