@@ -13,7 +13,7 @@ v0.0.08
 - Updated dictionary saving function (for real this time)
 - Added 'show' option to main argument
 - Added 'edit' option to main argument
--       Added 'create' and 'show' to 'edit' argument
+  - Added 'create' and 'show' to 'edit' argument
 - Corrected some spelling mistakes
 
 v0.0.07
