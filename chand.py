@@ -16,10 +16,15 @@ def print_debug():
 
 
 def set_config(section, option, value):
-	with open("state/state.config", 'w') as cfgfile:
-		value = 'tables/' + value
-		config.set(section, option, value)
-		config.write(cfgfile)
+	if '.loot' in value:
+		with open("state/state.config", 'w') as cfgfile:
+			value = 'tables/' + value
+			config.set(section, option, value)
+			config.write(cfgfile)
+	else:
+		with open("state/state.config", 'w') as cfgfile:
+			config.set(section, option, value)
+			config.write(cfgfile)
 
 
 def get_table():

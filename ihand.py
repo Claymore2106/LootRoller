@@ -6,7 +6,7 @@ def i_create(d):
 	rarity = input('Rarity of %s: ' % name)
 	l.append(rarity)
 	flavor = input('Flavor text (leave blank for none): ')
-	flavor = '"%s"' % flavor
+	flavor = '"%s"' % flavor  # Add necessary quotation characters
 	l.append(flavor)
 	d[name] = l
 	print("Added %s:%s to table" % (name, l))
