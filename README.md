@@ -8,6 +8,18 @@ percentages.
 
 ######Pre-alpha
 
+v0.0.09
+- Begin overhaul of interface
+  - Going to ditch state file in favor of a continuous loop
+    - (Quietly questioning why I didn't opt for this in the first place)
+  - Will be run with Items, NPC, Drop, Help, and Exit
+    - Items will enter item related menu, NPC will enter NPC, Drop will drop etc.
+  - Will have a master database of all items and all NPCs and all NPC tables.
+    - This will allow for items to be created once and reused in other tables.
+    - Will also allow for easier editing of items across tables.
+  - NPCs will be able to have multiple tables, and a current, 'default' table.
+    - This will allow for NPCs to be reused later in the game. For instance, a reoccuring boss.
+
 v0.0.08
 - Removed testing files, renamed cfgtest to chand
 - Updated dictionary saving function (for real this time)
