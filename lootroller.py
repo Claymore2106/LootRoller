@@ -7,14 +7,49 @@ from os import listdir
 from os.path import isfile, join
 
 
-parser = argparse.ArgumentParser('LootRoller')
+print(
+'\nWelcome to LootRoller!\n'
+'\n'
+'\n'
+'LootRoller is a program designed to create items and loot tables,\n'
+'manage those items and tables, and drop items according to chances\n'
+'defined by you.\n'
+'\n'
+'LootRoller runs in a continuous loop. For help, type "help". To exit, type "exit".\n'
+'\n'
+)
 
-parser.add_argument("ACTION",  choices=['list', 'select', 'show',  'edit', 'drop'])
-parser.add_argument("-t", nargs=1, metavar='<Table>', dest="path", help="File path to the table to load")
-parser.add_argument("-v", "--verboose", help="Increase verboosity", action="store_true")
 
-args = parser.parse_args()
+def main_loop():
+    command = (input('Command: ')).lower()  # Keep lowercase, so that any combo of caps can be used.
+    while command != 'exit':
+        
+        if command == 'help':
+            print(
+                '\nCurrently Available actions:\n'
+                '-------------\n'
+                'Items : Enter the item submenu to create, edit and delete items.\n'
+                'NPC   : Enter the NPC submenu to create, edit, and delete NPCs and their tables.\n'
+                'Drop  : Enter the item drop submenu to drop items from an NPC.\n'
+                'Help  : Display this help message.\n'
+                'Exit  : Exit the program.\n'
+                '-------------\n'
+                )
+            command = (input('Command: ')).lower()  # Keep the loop going.
 
+        if command == 'items':
+            pass
+
+        if command == 'npc':
+            pass
+
+        if command == 'drop':
+            pass
+
+
+main_loop()
+
+"""
 if args.ACTION == 'list':
 	path = 'tables/'
 	current = chand.get_table()
@@ -96,3 +131,4 @@ if args.ACTION == 'drop':
 	dhand.d_load(path, d)
 	drop.drop(d)
 
+"""
