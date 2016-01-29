@@ -1,6 +1,5 @@
 import argparse
 import dhand
-# import dtest
 import ihand
 import drop
 import chand
