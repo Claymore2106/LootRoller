@@ -14,7 +14,6 @@ v0.0.10
   - Add 'List' option
     - This option supports listing items in the master table as well as current unsaved changes.
   - Add 'Back' option
-
 - Create 'lootroller.bat' file to easily execute the file for Windows users.
 
 v0.0.09
