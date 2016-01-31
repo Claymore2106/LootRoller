@@ -44,22 +44,26 @@ def d_load(file_path, d):
 	return d
 
 
-def d_save(file_path, d):
-	for k in d:
-		b = False
-		f = open(file_path, 'r')
-		if k not in f.read():
-			s = ""
-			n = 1
-			for v in d[k]:
-				if n < len(d[k]):
-					s += ("%s," % str(v))
-					n += 1
-				elif n == len(d[k]):
-					s += str(v)
-			with open(file_path, 'a') as f:
-				f.write("%s|%s\n" % (str(k), str(s)))
-		f.close()
+def d_save(file_path, d, delta):  # FIX THIS
+    with open(file_path, 'w') as f:
+        for key in d:
+            f.write("%s|%s\n" % (str(k), str(s)))
+    #for k in d:
+    #    b = False
+    #    f = open(file_path, 'r')
+    #    if k not in f.read():
+    #        s = ""
+    #        n = 1
+    #        for v in d[k]:
+    #            if n < len(d[k]):
+    #                s += ("%s," % str(v))
+    #                n += 1
+    #            elif n == len(d[k]):
+    #                s += str(v)
+    #        with open(file_path, 'w') as f:
+    #            f.write("%s|%s\n" % (str(k), str(s)))
+    #    f.close()
+    #print('Wrote %i changes to MASTER-LOOT.loot' % delta)
 
 
 def d_clear(d):

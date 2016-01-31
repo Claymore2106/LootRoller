@@ -38,10 +38,11 @@ def main_loop():
 
         if command == 'items':
             master_table = {}
-            master_table = dhand.d_load('tables/MASTER-LOOT.loot', master_table)
             working_table = {}
+            master_table = dhand.d_load('tables/MASTER-LOOT.loot', master_table)
+            working_table = dhand.d_load('tables/MASTER-LOOT.loot.backup', working_table)
             master_length = len(master_table)
-            working_length = len(working_table)
+            delta = 0
 
             print(
                 '\nEntering menu >> items...\n'
@@ -65,8 +66,9 @@ def main_loop():
                         'Edit   : Edit an existing item. This will affect items in loot tables.\n'
                         'Delete : Remove an item entirely from the master list and all loot tables.\n'
                         'List   : List all items in the master table.\n'
-                        'Back   : Exit the Items submenu and return to the main menu\n'
+                        'Save   : Save working changes into the master table.\n'
                         'Help   : Display this help message.\n'
+                        'Back   : Exit the Items submenu and return to the main menu\n'
                         'Exit   : Exit the program.\n'
                         '---------------\n'
                         )
@@ -75,7 +77,15 @@ def main_loop():
 
                 if command == 'create':
                     ihand.i_create(working_table)
-                    working_length = len(working_table)
+                    delta += 1
+
+                if command == 'delete':
+                    item = input("Exact name of item to delete: ")
+                    ihand.i_delete(item, working_table)
+                    delta += 1
+
+                if command == 'save':
+                    dhand.d_save('tables/MASTER-LOOT.loot', working_table, delta)
                     
                 if command == 'list':
                     i = 1
@@ -87,15 +97,24 @@ def main_loop():
                         print('[%i] %s: %s' % (i, item, master_table[item]))
                         i += 1
                     print('')
-                    if working_length != 0:
+                    if delta != 0:
                         print(
                             'Working Table: (These changes have not yet been saved):\n'
                             '--------------'
                             )
                         i = 1
                         for item in sorted(working_table):
-                            print('[%i] %s: %s' % (i, item, working_table[item]))
-                            i += 1
+                            if item not in master_table:
+                                print('+ [%i] %s: %s' % (i, item, working_table[item]))
+                                i += 1
+                        i = 1
+                        for item in sorted(master_table):
+                            if item not in working_table:
+                                print('- [%i] %s: %s' % (i, item, master_table[item]))
+                        #i = 1
+                        #for item in sorted(working_table):
+                        #    if working_table[item] != master_table[item]:
+                        #        print('<> [%i] %s: %s' % (i, item, working_table[item]))
 
         if command == 'npc':
             pass

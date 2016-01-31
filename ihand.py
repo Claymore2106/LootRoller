@@ -12,3 +12,12 @@ def i_create(d):
 	print("Added %s:%s to table" % (name, l))
 	return d
 
+def i_delete(item, d):
+    if item in d:
+        print("Really delete %s: %s?" % (item, d[item]))
+        answer = (input('y/n: ')).lower()
+        if answer == 'y':
+            del d[item]
+            return d
+    else:
+        print('%s was not found in the table' % item)
