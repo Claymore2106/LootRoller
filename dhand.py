@@ -4,7 +4,7 @@ import csv
 def d_ini(file_path, d):
 	with open(file_path, 'r') as f:
 		reader = csv.reader(f, delimiter='|')
-		
+
 		for k, v in reader:
 			l = []
 			s = ""
@@ -23,7 +23,7 @@ def d_load(file_path, d):
 	d_clear(d)
 	with open(file_path, 'r') as f:
 		reader = csv.reader(f, delimiter='|', quotechar='"')
-		
+
 		for k, v in reader:
 			l = []
 			s = ""
@@ -44,25 +44,41 @@ def d_load(file_path, d):
 	return d
 
 
-def d_save(file_path, d, delta):  # FIX THIS
-    with open(file_path, 'w') as f:
-        for key in d:
-            f.write("%s|%s\n" % (str(k), str(s)))
-    #for k in d:
-    #    b = False
-    #    f = open(file_path, 'r')
-    #    if k not in f.read():
-    #        s = ""
-    #        n = 1
-    #        for v in d[k]:
-    #            if n < len(d[k]):
-    #                s += ("%s," % str(v))
-    #                n += 1
-    #            elif n == len(d[k]):
-    #                s += str(v)
-    #        with open(file_path, 'w') as f:
-    #            f.write("%s|%s\n" % (str(k), str(s)))
-    #    f.close()
+def d_save2(file_path, table, delta):
+	with open(file_path, 'w') as savefile:
+		for item in table:
+			values = table[item]
+			string_value = ""
+			index = 1
+			while index <= len(values):
+				if index < len(values):
+					string_value += "%s," % values[index - 1]
+					index += 1
+				elif index == len(values):
+					string_value += "%s" % values[index - 1]
+					index += 1
+			savefile.write("%s|%s\n" % (item, string_value))
+
+
+def d_save(file_path, table, delta):  # FIX THIS
+    #with open(file_path, 'w') as f:
+    #    for key in d:
+    #        f.write("%s|%s\n" % (str(k), str(s)))
+    for item in table:
+        #b = False
+        readfile = open(file_path, 'r')
+        if item not in readfile.read():
+            string = ""
+            position = 1
+            for value in table[item]:
+                if position < len(table[item]):
+                    string += ("%s," % str(value))
+                    n += 1
+                elif n == len(d[k]):
+                    s += str(v)
+            with open(file_path, 'w') as f:
+                f.write("%s|%s\n" % (str(k), str(s)))
+        f.close()
     #print('Wrote %i changes to MASTER-LOOT.loot' % delta)
 
 

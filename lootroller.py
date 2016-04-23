@@ -22,8 +22,9 @@ def main_loop():
     )  # Print this jazz only one time hopefully.
     command = ''  # Initialize an empty string
     while command != 'exit':
-        command = (input('Menu >> Command: ')).lower()  # Keep lowercase, so that any combo of caps can be used.
-        
+        command = (input('Menu >> Command: ')).lower()  # Keep lowercase, so
+                                            # that any combo of caps can be used
+
         if command == 'help':
             print(
                 '\nCurrently Available actions:\n'
@@ -40,7 +41,7 @@ def main_loop():
             master_table = {}
             working_table = {}
             master_table = dhand.d_load('tables/MASTER-LOOT.loot', master_table)
-            working_table = dhand.d_load('tables/MASTER-LOOT.loot.backup', working_table)
+            working_table = dhand.d_load('tables/MASTER-LOOT.loot', working_table)
             master_length = len(master_table)
             delta = 0
 
@@ -54,10 +55,10 @@ def main_loop():
                 '\n'
                 'Loaded ' + str(master_length) + ' items from the master table.\n'
                 )
-                
+
             while command != 'exit':
                 command = (input('Items >> Command: ')).lower()
-                
+
                 if command == 'help':
                     print(
                         '\nCurrently Available actions:\n'
@@ -85,8 +86,8 @@ def main_loop():
                     delta += 1
 
                 if command == 'save':
-                    dhand.d_save('tables/MASTER-LOOT.loot', working_table, delta)
-                    
+                    dhand.d_save2('tables/MASTER-LOOT.loot', working_table, delta)
+
                 if command == 'list':
                     i = 1
                     print('\n'
@@ -115,7 +116,7 @@ def main_loop():
                         #for item in sorted(working_table):
                         #    if working_table[item] != master_table[item]:
                         #        print('<> [%i] %s: %s' % (i, item, working_table[item]))
-
+                        print('')
         if command == 'npc':
             pass
 
