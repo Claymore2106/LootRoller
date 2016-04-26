@@ -7,35 +7,71 @@ from os import listdir
 from os.path import isfile, join
 
 
-def main_loop():
-    print(
-    '\n'
-    '----------------------\n'
-    'Welcome to LootRoller!\n'
-    '----------------------\n'
-    '\n'
-    'LootRoller is a program designed to create items and loot tables,\n'
-    'manage those items and tables, and drop items according to chances\n'
-    'defined by you.\n'
-    '\n'
-    'LootRoller runs in a continuous loop. For help, type "help". To exit, type "exit".\n'
-    )  # Print this jazz only one time hopefully.
-    command = ''  # Initialize an empty string
+def printer(location, *var1):
+    if location == "main":
+        print(
+        '\n'
+        '----------------------\n'
+        'Welcome to LootRoller!\n'
+        '----------------------\n'
+        '\n'
+        'LootRoller is a program designed to create items and loot tables,\n'
+        'manage those items and tables, and drop items according to chances\n'
+        'defined by you.\n'
+        '\n'
+        'LootRoller runs in a continuous loop. For help, type "help". To exit, type "exit".\n'
+        )  # Print this jazz only one time hopefully.
+
+    elif location == "main help":
+        print(
+        '\nCurrently Available actions:\n'
+        '-------------\n'
+        'Items : Enter the item submenu to create, edit and delete items.\n'
+        'NPC   : Enter the NPC submenu to create, edit, and delete NPCs and their tables.\n'
+        'Drop  : Enter the item drop submenu to drop items from an NPC.\n'
+        'Help  : Display this help message.\n'
+        'Exit  : Exit the program.\n'
+        '-------------\n'
+        )  # Help section for main
+
+    elif location == "items":
+        print(
+            '\nEntering menu >> items...\n'
+            '\n'
+            '---------------------------\n'
+            '\n'
+            "Type 'help' for available options.\n"
+            "Type 'back' to exit this submenu, or 'exit' to exit program.\n"
+            '\n'
+            'Loaded ' + str(var1) + ' items from the master table.\n'
+            )
+
+    elif location == "items help":
+        print(
+            '\nCurrently Available actions:\n'
+            '---------------\n'
+            'Create : Create a new item for use in loot tables.\n'
+            'Edit   : Edit an existing item. This will affect items in loot tables.\n'
+            'Delete : Remove an item entirely from the master list and all loot tables.\n'
+            'List   : List all items in the master table.\n'
+            'Save   : Save working changes into the master table.\n'
+            'Help   : Display this help message.\n'
+            'Back   : Exit the Items submenu and return to the main menu\n'
+            'Exit   : Exit the program.\n'
+            '---------------\n'
+            )
+
+
+def main():
+    printer("main") # Print the Main Section Text
+
+    command = ''  # Initialize an empty command string
     while command != 'exit':
         command = (input('Menu >> Command: ')).lower()  # Keep lowercase, so
                                             # that any combo of caps can be used
 
         if command == 'help':
-            print(
-                '\nCurrently Available actions:\n'
-                '-------------\n'
-                'Items : Enter the item submenu to create, edit and delete items.\n'
-                'NPC   : Enter the NPC submenu to create, edit, and delete NPCs and their tables.\n'
-                'Drop  : Enter the item drop submenu to drop items from an NPC.\n'
-                'Help  : Display this help message.\n'
-                'Exit  : Exit the program.\n'
-                '-------------\n'
-                )
+            printer("main help")
 
         if command == 'items':
             master_table = {}
@@ -45,34 +81,14 @@ def main_loop():
             master_length = len(master_table)
             delta = 0
 
-            print(
-                '\nEntering menu >> items...\n'
-                '\n'
-                '---------------------------\n'
-                '\n'
-                "Type 'help' for available options.\n"
-                "Type 'back' to exit this submenu, or 'exit' to exit program.\n"
-                '\n'
-                'Loaded ' + str(master_length) + ' items from the master table.\n'
-                )
+            printer("items", str(master_length))  # Print Items Section Text
 
             while command != 'exit':
                 command = (input('Items >> Command: ')).lower()
 
                 if command == 'help':
-                    print(
-                        '\nCurrently Available actions:\n'
-                        '---------------\n'
-                        'Create : Create a new item for use in loot tables.\n'
-                        'Edit   : Edit an existing item. This will affect items in loot tables.\n'
-                        'Delete : Remove an item entirely from the master list and all loot tables.\n'
-                        'List   : List all items in the master table.\n'
-                        'Save   : Save working changes into the master table.\n'
-                        'Help   : Display this help message.\n'
-                        'Back   : Exit the Items submenu and return to the main menu\n'
-                        'Exit   : Exit the program.\n'
-                        '---------------\n'
-                        )
+                    printer("items help")  # Print Items' Help Section
+
                 if command == 'back':
                     break
 
@@ -124,7 +140,7 @@ def main_loop():
             pass
 
 
-main_loop()
+main()
 
 
 #if args.ACTION == 'list':
