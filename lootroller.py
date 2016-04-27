@@ -1,8 +1,11 @@
-import argparse
+import platform
 import dhand
 import ihand
 import drop
-import chand
+
+if "linux" in str(platform.system()).lower():
+    import chand
+
 from os import listdir
 from os.path import isfile, join
 
@@ -36,14 +39,14 @@ def printer(location, *var1):
 
     elif location == "items":
         print(
-            '\nEntering menu >> items...\n'
+            '\nEntering menu >> Items...\n'
             '\n'
             '---------------------------\n'
             '\n'
             "Type 'help' for available options.\n"
             "Type 'back' to exit this submenu, or 'exit' to exit program.\n"
             '\n'
-            'Loaded ' + str(var1) + ' items from the master table.\n'
+            'Loaded %i items from the master table.\n' % var1
             )
 
     elif location == "items help":
@@ -71,9 +74,6 @@ def main():
         command = (input('Menu >> Command: ')).lower()  # Keep lowercase, so
                                             # that any combo of caps can be used
 
-        if command == 'help':
-            printer("main help")
-
         if command == 'items':
             master_table = {}
             working_table = {}
@@ -82,28 +82,22 @@ def main():
             master_length = len(master_table)
             delta = 0
 
-            printer("items", str(master_length))  # Print Items Section Text
+            printer("items", master_length)  # Print Items Section Text
 
             while command != 'exit':
                 command = (input('Items >> Command: ')).lower()
-
-                if command == 'help':
-                    printer("items help")  # Print Items' Help Section
-
-                if command == 'back':
-                    break
 
                 if command == 'create':
                     ihand.i_create(working_table)
                     delta += 1
 
+                if command == 'edit':
+                    print('Not yet functional.')
+
                 if command == 'delete':
                     item = input("Exact name of item to delete: ")
                     ihand.i_delete(item, working_table)
                     delta += 1
-
-                if command == 'save':
-                    dhand.d_save2('tables/MASTER-LOOT.loot', working_table, delta)
 
                 if command == 'list':
                     i = 1
@@ -134,12 +128,23 @@ def main():
                         #    if working_table[item] != master_table[item]:
                         #        print('<> [%i] %s: %s' % (i, item, working_table[item]))
                         print('')
+
+                if command == 'save':
+                    dhand.d_save2('tables/MASTER-LOOT.loot', working_table, delta)
+
+                if command == 'help':
+                    printer("items help")  # Print Items' Help Section
+
+                if command == 'back':
+                    break
         if command == 'npc':
-            pass
+            print('Not yet functional.')
 
         if command == 'drop':
-            pass
+            print('Not yet functional.')
 
+        if command == 'help':
+            printer("main help")
 
 main()
 
